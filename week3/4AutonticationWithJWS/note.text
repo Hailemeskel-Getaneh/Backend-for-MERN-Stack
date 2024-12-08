@@ -1,0 +1,48 @@
+
+Week 3 - Day 4: Middleware and Authentication
+In this session, we’ll focus on middleware in Express and learn to build secure authentication using JSON Web Tokens (JWT). This is an essential step toward creating robust backend systems.
+
+1. Middleware in Express
+What is Middleware?
+Middleware functions are functions that have access to the request (req), response (res), and the next function in the request-response cycle. They execute code, make changes to the request/response objects, and call the next middleware.
+
+Built-in Middleware Examples
+javascript
+Copy code
+const express = require('express');
+const app = express();
+
+// Built-in middleware to parse JSON
+app.use(express.json());
+
+// Built-in middleware to serve static files
+app.use(express.static('public'));
+
+// Example route
+app.post('/example', (req, res) => {
+  res.send(`Hello, ${req.body.name}`);
+});
+
+app.listen(3000, () => console.log('Server running on port 3000'));
+Custom Middleware
+A custom middleware can perform tasks like logging, authentication checks, or modifying requests.
+
+javascript
+Copy code
+const logger = (req, res, next) => {
+  console.log(`${req.method} ${req.url} - ${new Date().toISOString()}`);
+  next(); // Pass control to the next middleware/route
+};
+
+app.use(logger); // Apply the middleware globally
+Explanation: Every request to the server logs the method, URL, and timestamp.
+2. Authentication Using JWT
+What is JWT?
+JSON Web Token (JWT) is a standard for securely transmitting information between parties as a JSON object.
+It is commonly used for authentication.
+Steps to Implement JWT Authentication
+Install the required packages:
+
+bash
+Copy code
+npm install jsonwebtoken bcrypt

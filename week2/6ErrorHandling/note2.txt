@@ -1,0 +1,29 @@
+Using HTTP Status Codes
+HTTP status codes inform the client about the result of their request.
+ Here are common categories:
+
+a. Informational (1xx)
+
+Rarely used in APIs.
+Example: 100 Continue.
+
+b. Success (2xx)
+
+200 OK: Request succeeded.
+201 Created: Resource created.
+204 No Content: Success with no response body.
+
+c. Redirection (3xx)
+
+Example: 304 Not Modified.
+d. Client Errors (4xx)
+
+400 Bad Request: Invalid input.
+401 Unauthorized: Authentication required.
+403 Forbidden: Access denied.
+404 Not Found: Resource not found.
+
+e. Server Errors (5xx)
+
+500 Internal Server Error: Generic server error.
+503 Service Unavailable: Server temporarily overloaded or under maintenance.

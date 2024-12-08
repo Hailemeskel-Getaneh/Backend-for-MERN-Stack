@@ -1,0 +1,13 @@
+1. What is Middleware in Express?
+Middleware is a function that has access to the request (req), response (res), and the next middleware function in the application’s request-response cycle. Middleware functions can modify the request and response objects, execute code, and call the next middleware in the stack.
+
+Middleware Flow
+A request comes into the server.
+Express looks for matching routes.
+Middleware functions are executed before the route handler (unless explicitly skipped).
+If a route is found, the handler executes; if not, Express returns a 404 response.
+
+2. Types of Middleware
+Built-in Middleware: Provided by Express, such as express.json() and express.static().
+Third-Party Middleware: External packages, like morgan for logging or cors for handling cross-origin requests.
+Custom Middleware: You write these yourself to add specific functionality (like logging, authentication checks, etc.).

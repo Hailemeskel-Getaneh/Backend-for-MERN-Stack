@@ -1,0 +1,58 @@
+Week 2 Overview: Building REST APIs with Express
+Day 1: Routing in Express
+Day 2: Middleware and Request Handling
+Day 3: Handling Query Strings, Parameters, and Validation
+Day 4: CRUD Operations and Structuring Code
+Day 5: Error Handling and HTTP Status Codes
+Day 6: RESTful API Design Principles
+Day 7: Review and Build a Mini-Project
+Day 1: Routing in Express
+Today, we’ll explore:
+
+What routing is in Express.
+How to define routes for different HTTP methods.
+Dynamic routes with parameters.
+1. What is Routing?
+Routing refers to determining how an application responds to a client request at a particular endpoint (URL).
+
+Basic Example
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => res.send('Welcome to the homepage!'));
+app.get('/about', (req, res) => res.send('About us'));
+app.listen(3000, () => console.log('Server running at http://localhost:3000'));
+2. Route Methods
+Express provides methods like app.get(), app.post(), app.put(), and app.delete() to define routes for specific HTTP methods.
+
+Example
+app.get('/hello', (req, res) => res.send('Hello World!'));
+app.post('/submit', (req, res) => res.send('Form Submitted!'));
+app.put('/update', (req, res) => res.send('Updated Successfully!'));
+app.delete('/remove', (req, res) => res.send('Deleted Successfully!'));
+3. Dynamic Routes with Parameters
+Dynamic routes use : to define placeholders in the URL, which can capture data from the URL itself.
+
+Example
+Copy code
+app.get('/user/:id', (req, res) => {
+  const userId = req.params.id; // Access route parameters
+  res.send(`User ID: ${userId}`);
+});
+Testing
+Start your server.
+Open a browser and navigate to http://localhost:3000/user/123.
+The response should display: User ID: 123.
+4. Route Chaining for Modular Code
+You can use .route() to group routes with the same path but different methods.
+
+app.route('/book')
+  .get((req, res) => res.send('Get all books'))
+  .post((req, res) => res.send('Add a new book'))
+  .put((req, res) => res.send('Update a book'));
+Assignment
+Create an Express app with these routes:
+GET /products: Return "List of Products."
+POST /products: Return "Add a Product."
+GET /products/:id: Return "Product with ID: X."
+Test these routes using Postman or your browser.
