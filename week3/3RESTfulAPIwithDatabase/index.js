@@ -8,8 +8,8 @@ import productsRoute from './Routes/productRoute.js';
 const app = express();
 
 //middleware to parse the json body
-app.use(express.json());
-// app.use(bodyParser.json())
+// app.use(express.json());
+app.use(bodyParser.json())
 
 app.use(cors())
 
@@ -21,10 +21,11 @@ const MongoURL = process.env.MONGO_URL;
 //conncet the database
 mongoose.connect(MongoURL)
 .then(() => console.log('Database connected successfully'))
-.catch(error => console.log('Error: Database connection failed'))
+.catch(error => console.log('Error: Database connection failed', error))
 
 app.use('/products', productsRoute)
 
 app.listen(PORT, () =>{
     console.log(`Server is running at port ${PORT}`)
 });
+

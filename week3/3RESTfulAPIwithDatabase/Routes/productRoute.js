@@ -9,7 +9,17 @@ router.get('/', async(req, res) => {
         res.status(201).json(products)
     }
     catch(error){
-        res.status(400).json({message:'Error in fetching the data'})
+        res.status(404).json({message:'Error in fetching the data'})
+    }
+})
+
+router.get('/:id', async(req, res) => {
+    try{  
+        const products = await productsModel.findById(req.params.id == productsModel.id);
+        res.status(201).json(products)
+    }
+    catch(error){
+        res.status(404).json({message:'Error in fetching the data'})
     }
 })
 
@@ -56,6 +66,7 @@ router.put('/:id', async (req, res) =>{
     }
     
 })
+
 
 //delete a product from the model
 
