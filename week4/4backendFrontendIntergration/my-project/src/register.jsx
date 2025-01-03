@@ -37,6 +37,7 @@ const RegistrationForm = () => {
             id="name"
             name="name"
             type="text"
+            value={formData.name}
             placeholder="Enter your name"
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -51,6 +52,7 @@ const RegistrationForm = () => {
             id="email"
             name="email"
             type="email"
+            value={formData.email}
             placeholder="Enter your email"
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -65,6 +67,7 @@ const RegistrationForm = () => {
             id="password"
             name="password"
             type="password"
+            value={formData.password}
             placeholder="Enter your password"
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
