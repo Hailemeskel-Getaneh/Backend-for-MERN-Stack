@@ -1,15 +1,17 @@
 import express from 'express';
 import cors from 'cors';
 import nodemailer from 'nodemailer'
-
+import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 
 const app = express()
 app.use(cors());
 
+dotenv.config()
 
 
+const PORT = process.env.PORT;
 
-const PORT = 4000;
 app.use(bodyParser.json());
 app.use(express.static('public')); // Serve static files (like your React build)
 
