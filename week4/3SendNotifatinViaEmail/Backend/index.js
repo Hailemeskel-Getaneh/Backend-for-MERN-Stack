@@ -1,17 +1,18 @@
 import express from 'express';
-import cors from 'cors';
-import nodemailer from 'nodemailer'
+import nodemailer from 'nodemailer';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
-const app = express()
+
+dotenv.config();
+
+const app = express();
 app.use(cors());
 
-dotenv.config()
+const port = process.env.PORT || 5000;
 
-
-const PORT = process.env.PORT;
-
+// Middleware
 app.use(bodyParser.json());
 app.use(express.static('public')); // Serve static files (like your React build)
 
@@ -24,6 +25,28 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port http://localhost:${PORT}`)
-})
+
+// API endpoint to handle contact form submissions
+app.post('/api/contact', (req, res) => {
+  const { name, email, message } = req.body;
+
+  const mailOptions = {
+    from: email,
+    to: process.env.EMAIL_USER,
+    subject: `New Message from ${name}`,
+    text: `You have a new message from ${name} (${email}):\n\n${message}`,
+  };
+
+  
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error('Error sending email:', error);
+      return res.status(500).send('Error sending message.');
+    }
+    res.status(200).send('Message sent successfully!');
+  });
+});
+
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
