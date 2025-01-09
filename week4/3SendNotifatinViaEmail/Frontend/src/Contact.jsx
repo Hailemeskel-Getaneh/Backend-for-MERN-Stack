@@ -43,11 +43,11 @@ const Contact = () => {
     <section
       id="contact"
       className="relative min-h-screen text-white py-20 px-12 bg-cover bg-center"
-      style={{
-        backgroundImage: `url(${HomeBackground})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-      }}
+      // style={{
+      //   backgroundImage: `url(${HomeBackground})`,
+      //   backgroundSize: 'cover',
+      //   backgroundPosition: 'center',
+      // }}
     >
       {/* Background Overlay */}
       <div className="absolute inset-0 bg-black opacity-50"></div>
@@ -69,7 +69,6 @@ const Contact = () => {
 
         {/* Contact Form */}
         <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-6">
-          {/* Name Input */}
           <div>
             <label htmlFor="name" className="block text-lg font-semibold">
               Your Name
