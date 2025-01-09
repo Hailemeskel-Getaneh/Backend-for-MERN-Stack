@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import HomeBackground from '../assets/images/homeBackground3.jpg';
+// import HomeBackground from '../assets/images/homeBackground3.jpg';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +15,7 @@ const Contact = () => {
       [name]: value,
     }));
   };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
